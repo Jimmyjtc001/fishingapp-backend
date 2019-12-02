@@ -31,9 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+ # # Our Apps
     'api.apps.ApiConfig',
+     #'homepage.apps.HomepageConfig',
+     #'gateway.apps.GatewayConfig',
     'foundation.apps.FoundationConfig',
+    # 'dashboard.apps.DashboardConfig',
+    # 'instrument.apps.InstrumentConfig',
+    # 'userprofile.apps.UserprofileConfig',
+    # 'report.apps.ReportConfig',
+    # 'sensor.apps.SensorConfig',
 
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,9 +50,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third Party Apps`
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders'
+    #'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -124,11 +135,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+
+STATIC_URL = '/static/'
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-    # 'rest_framework.authentication.BasicAuthentication',
-    'rest_framework.authentication.SessionAuthentication',
-    'foundation.drf.custom-authentication.CsrfExemptSessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': (
         # PLACE FILTERING CLASSES HERE.
@@ -145,5 +158,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 50
 }
 
-STATIC_URL = '/static/'
+
+# django-cors-headers
+# https://github.com/adamchainz/django-cors-headers
 CORS_ORIGIN_ALLOW_ALL = True

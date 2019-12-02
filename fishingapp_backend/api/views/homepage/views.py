@@ -1,14 +1,14 @@
-from rest_framework import status, response, views
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-from django.shortcuts import redirect
+"""
+homepage/views.py
+"""
+from rest_framework import status, views, response
 
 
-class GetVersion(views.APIView):
+class VersionAPI(views.APIView):
     def get(self, request):
         return response.Response(
             status=status.HTTP_200_OK,
             data={
-                'version': 'Fishingapp',
+                'version': '3',
             }
         )
