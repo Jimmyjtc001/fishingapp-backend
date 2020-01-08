@@ -13,12 +13,16 @@ urlpatterns = [
     # --------------------------#
 
     # HOMEPAGE
-    path('api/version', views.VersionAPI.as_view(), name='version_api'),
+    path('', views.UserLocationAPI.as_view(), name='UserLocationAPI' ),
+
+    # pm
+    path('api/fishingspots', views.FishingSpotListAPI.as_view(), name='FishingSpotListAPI'),
+    path('api/searchelements', views.SearchElementListAPI.as_view(), name='SearchElementListAPI'),
+    # path('api/favorites', views.FavoritesListAPI.as_view(), name='FavoritesListAPI'),
 
     # GATEWAY
     path('api/register', views.RegisterAPI.as_view(), name='register_api'),
     path('api/login', obtain_auth_token, name='api_token_auth'),
-    path('api/logout', views.post_logout_api, name='logout_api'),
 
     #-------------------------#
     # PROTECTED API ENDPOINTS #
@@ -26,13 +30,6 @@ urlpatterns = [
 
     # DASHBOARD
     path('api/dashboard', views.DashboardAPI.as_view(), name='dashboard_api'),
-
-    # INSTRUMENTS
-    path('api/instruments', views.InstrumentListAPI.as_view(), name='instruments_list_api'),
-    path('api/instrument/<int:id>', views.InstrumentRetrieveAPI.as_view(), name='instruments_retrieve_api'),
-    path('api/instrument/<int:id>/update', views.InstrumentUpdateAPI.as_view(), name='instruments_update_api'),
-
-    # REPORTS
-    path('api/report/1', views.DownloadCSVReport01API.as_view(), name="download_csv_report_01_temperature_sensor_api")
+    path('api/favourites', views.FavouritesAPI.as_view(), name='add_favourites'),
 
 ]
